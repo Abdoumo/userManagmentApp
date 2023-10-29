@@ -4,9 +4,12 @@ import React, { useState } from 'react';
 
 const SelectWillaya = (props) => {
   let filterOnchange = props.filterOnchange
-  const [onChange, setChange ] =  useState('')
+  let value=props.value
+  const [onChange, setChange ] =  useState(value)
   const handleChange = (event, label) => {
+    console.log(event, label, 'ss')
     filterOnchange(label['label'] )
+    setChange(label['label'])
 
 }
   return (
@@ -20,58 +23,59 @@ const SelectWillaya = (props) => {
     filterSort={(optionA, optionB) =>
       (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
     }
-
+    value={{"value": onChange}}
     onChange={handleChange}
-    options={[
-      { "value": 1, "label": "Adrar" },
-      { "value": 2, "label": "Chlef" },
-      { "value": 3, "label": "Laghouat" },
-      { "value": 4, "label": "Oum El Bouaghi" },
-      { "value": 5, "label": "Batna" },
-      { "value": 6, "label": "Béjaïa" },
-      { "value": 7, "label": "Biskra" },
-      { "value": 8, "label": "Béchar" },
-      { "value": 9, "label": "Blida" },
-      { "value": 10, "label": "Bouira" },
-      { "value": 11, "label": "Tamanrasset" },
-      { "value": 12, "label": "Tébessa" },
-      { "value": 13, "label": "Tlemcen" },
-      { "value": 14, "label": "Tiaret" },
-      { "value": 15, "label": "Tizi Ouzou" },
-      { "value": 16, "label": "Alger (Algiers)" },
-      { "value": 17, "label": "Djelfa" },
-      { "value": 18, "label": "Jijel" },
-      { "value": 19, "label": "Sétif" },
-      { "value": 20, "label": "Saïda" },
-      { "value": 21, "label": "Skikda" },
-      { "value": 22, "label": "Sidi Bel Abbès" },
-      { "value": 23, "label": "Annaba" },
-      { "value": 24, "label": "Guelma" },
-      { "value": 25, "label": "Constantine" },
-      { "value": 26, "label": "Médéa" },
-      { "value": 27, "label": "Mostaganem" },
-      { "value": 28, "label": "M'Sila" },
-      { "value": 29, "label": "Mascara" },
-      { "value": 30, "label": "Ouargla" },
-      { "value": 31, "label": "Oran" },
-      { "value": 32, "label": "El Bayadh" },
-      { "value": 33, "label": "Illizi" },
-      { "value": 34, "label": "Bordj Bou Arréridj" },
-      { "value": 35, "label": "Boumerdès" },
-      { "value": 36, "label": "El Tarf" },
-      { "value": 37, "label": "Tindouf" },
-      { "value": 38, "label": "Tissemsilt" },
-      { "value": 39, "label": "El Oued" },
-      { "value": 40, "label": "Khenchela" },
-      { "value": 41, "label": "Souk Ahras" },
-      { "value": 42, "label": "Tipaza" },
-      { "value": 43, "label": "Mila" },
-      { "value": 44, "label": "Aïn Defla" },
-      { "value": 45, "label": "Naama" },
-      { "value": 46, "label": "Aïn Témouchent" },
-      { "value": 47, "label": "Ghardaïa" },
-      { "value": 48, "label": "Relizane" }
+    options={ [
+      { "value": "Adrar", "label": "Adrar" },
+      { "value": "Chlef", "label": "Chlef" },
+      { "value": "Laghouat", "label": "Laghouat" },
+      { "value": "Oum El Bouaghi", "label": "Oum El Bouaghi" },
+      { "value": "Batna", "label": "Batna" },
+      { "value": "Béjaïa", "label": "Béjaïa" },
+      { "value": "Biskra", "label": "Biskra" },
+      { "value": "Béchar", "label": "Béchar" },
+      { "value": "Blida", "label": "Blida" },
+      { "value": "Bouira", "label": "Bouira" },
+      { "value": "Tamanrasset", "label": "Tamanrasset" },
+      { "value": "Tébessa", "label": "Tébessa" },
+      { "value": "Tlemcen", "label": "Tlemcen" },
+      { "value": "Tiaret", "label": "Tiaret" },
+      { "value": "Tizi Ouzou", "label": "Tizi Ouzou" },
+      { "value": "Alger (Algiers)", "label": "Alger (Algiers)" },
+      { "value": "Djelfa", "label": "Djelfa" },
+      { "value": "Jijel", "label": "Jijel" },
+      { "value": "Sétif", "label": "Sétif" },
+      { "value": "Saïda", "label": "Saïda" },
+      { "value": "Skikda", "label": "Skikda" },
+      { "value": "Sidi Bel Abbès", "label": "Sidi Bel Abbès" },
+      { "value": "Annaba", "label": "Annaba" },
+      { "value": "Guelma", "label": "Guelma" },
+      { "value": "Constantine", "label": "Constantine" },
+      { "value": "Médéa", "label": "Médéa" },
+      { "value": "Mostaganem", "label": "Mostaganem" },
+      { "value": "M'Sila", "label": "M'Sila" },
+      { "value": "Mascara", "label": "Mascara" },
+      { "value": "Ouargla", "label": "Ouargla" },
+      { "value": "Oran", "label": "Oran" },
+      { "value": "El Bayadh", "label": "El Bayadh" },
+      { "value": "Illizi", "label": "Illizi" },
+      { "value": "Bordj Bou Arréridj", "label": "Bordj Bou Arréridj" },
+      { "value": "Boumerdès", "label": "Boumerdès" },
+      { "value": "El Tarf", "label": "El Tarf" },
+      { "value": "Tindouf", "label": "Tindouf" },
+      { "value": "Tissemsilt", "label": "Tissemsilt" },
+      { "value": "El Oued", "label": "El Oued" },
+      { "value": "Khenchela", "label": "Khenchela" },
+      { "value": "Souk Ahras", "label": "Souk Ahras" },
+      { "value": "Tipaza", "label": "Tipaza" },
+      { "value": "Mila", "label": "Mila" },
+      { "value": "Aïn Defla", "label": "Aïn Defla" },
+      { "value": "Naama", "label": "Naama" },
+      { "value": "Aïn Témouchent", "label": "Aïn Témouchent" },
+      { "value": "Ghardaïa", "label": "Ghardaïa" },
+      { "value": "Relizane", "label": "Relizane" }
   ]
+  
   }
   />
     </div>

@@ -5,3 +5,29 @@
 #payed{
     width: '200px';margin: '3px';padding: '19px';
 }
+
+:where(.css-dev-only-do-not-override-k83k30).ant-card .ant-card-body {
+    padding: 0px;
+}
+table#tableViewer {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table#tableViewer td, table#tableViewer th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table#tableViewer tr:nth-child(even){background-color: #f2f2f2;}
+
+table#tableViewer tr:hover {background-color: #ddd;}
+
+table#tableViewer th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
