@@ -3,12 +3,11 @@ import { Button } from 'antd';
 import TableComponent from '../../table';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const AllCountries = ({data}) => {
+const AllCountries = ({data, ADDed}) => {
     const location = useLocation()
     const navigate = useNavigate()
 
     let WebsiteUserCreate = location.state
-    console.log(WebsiteUserCreate, 'WebsiteUserCreate')
     useEffect(() => {
     
   }, [data])

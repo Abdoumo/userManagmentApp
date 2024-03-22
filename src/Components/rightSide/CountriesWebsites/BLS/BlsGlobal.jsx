@@ -13,7 +13,7 @@ const BlsGlobal = ({data}) => {
 // const navigate = useNavigate();
   return (
     <div>
-      <Button type="primary" onClick={() => navigate(`/CreateUser`, {state : {country: 'BLS'}})} style={{margin: '25px'}} size={'large'}> Ajouter un utulisateur </Button>
+      <Button type="primary" className='ADDUSER' onClick={() => navigate(`/CreateUser`, {state : {country: 'BLS'}})} style={{margin: '25px'}} size={'large'}> Ajouter un utulisateur </Button>
       {
         data['BLS'] && (
           <TableComponent country='BLS' />

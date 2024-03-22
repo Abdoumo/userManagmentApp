@@ -32,9 +32,8 @@ const CreateUser = (para) => {
     const [modal, contextHolder] = Modal.useModal();
 
     function writeUserData() {
-      console.log(userLogin.displayName)
       
-        set(ref(db, `${userLogin.displayName}/` + `${WebsiteUserCreate.toUpperCase()}/` + `${name} ${lastName}`), {
+        set(ref(db, `${userLogin.email.replace('.', '_')}/` + `${WebsiteUserCreate.toUpperCase()}/` + `${name} ${lastName}`), {
           name: name,
         lastName: lastName,
         mail : email,
@@ -91,7 +90,7 @@ const CreateUser = (para) => {
             <SelectWillaya value={''} filterOnchange = {(event) => setWillaya(event)} />
             <PAYEDComponent value={''} filterOnchange={e => SETPAYED(e)} />
             <Input size={size} value={etatCivile} onChange={ele => setEtatCivile(ele.target.value)} prefix={<MailOutlined />} placeholder="EtatCivile" />
-            <Button type="primary" onClick={writeUserData} style={{margin: '25px'}} size={'large'}> Ajouter un utulisateur </Button>
+            <Button type="primary" className='ADDUSER' onClick={writeUserData} style={{margin: '25px'}} size={'large'}> Ajouter un utulisateur </Button>
             {contextHolder}
         </div>
     </div>
@@ -181,7 +180,7 @@ const UpdateUser = () => {
             <SelectWillaya value = {willaya} filterOnchange = {(event) => setWillaya(event)} />
             <Input size={size} value={passportSt} onChange={(ele) => {SETpassportSt(ele)}}  prefix={<MailOutlined />} placeholder="Passport expiration" />            <PAYEDComponent value={PAYED} filterOnchange={e => SETPAYED(e)} />
             <Input size={size} value={etatCivile} onChange={ele => setEtatCivile(ele.target.value)} prefix={<MailOutlined />} placeholder="EtatCivile" />
-            <Button type="primary" onClick={writeUserData} style={{margin: '25px'}} size={'large'}> Modifier L'utulisateur </Button>
+            <Button className='ADDUSER' type="primary" onClick={writeUserData} style={{margin: '25px'}} size={'large'}> Modifier L'utulisateur </Button>
             {contextHolder}
         </div>
         </div>

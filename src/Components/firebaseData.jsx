@@ -6,13 +6,12 @@ import { db } from '../firebase';
 const FirebaseData = () => {
     const { setData, data, userLogin } = useContext(AppContext)
     const starCountRef = ref(db);
-    console.log(userLogin?.displayName, 'lllll')
     useEffect(() => {
-      var displayName = userLogin?.displayName
+      var emailCount = userLogin?.email?.replace('.', '_')
         onValue(starCountRef, (snapshot) => {
         const dataResult = snapshot.val();
-        // console.log('db', )
-        setData(dataResult[`${displayName}`])
+        setData(dataResult[`${emailCount}`])
+        localStorage.setItem('myData', JSON.stringify(dataResult[`${emailCount}`]));
         
         
     });

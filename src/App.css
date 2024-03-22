@@ -5,13 +5,58 @@
 }
 
 .leftside{
-  background-color: blue;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3) !important;
+}
+
+
+#submitButton {
+  justify-content: start;
+  display: flex;
+  margin-top: 24px;
+  margin-right: 73px !important;
+  padding: 3px 50px 3px 50px;
 }
 
 .leftside > div >  button {
+  border-radius: 15px;
   width: 80%;
   padding: 35px !important;
   margin: 25px !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .5) !important;
+  color: black;
+  font-size: 18px;
+  font-weight: 600; 
+  
+}
+
+form#basic {
+  border: 0.3px solid black;
+  padding: 27px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3) !important;
+  border-radius: 15px;
+}
+
+.Form {
+  justify-content: center !important;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.ADDUSER{
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .5) !important;
+  color: black;
+  font-size: 18px;
+  font-weight: 600; 
+}
+
+#Logout{
+  background-color: red;
+}
+
+#Logout:hover{
+  background-color: green;
 }
 
 .Avatar{

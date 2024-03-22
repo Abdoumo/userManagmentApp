@@ -9,11 +9,14 @@ import Login from './Login';
 
 export const AppContext = createContext(null)
 function App() {
-  let [ data , setData ] = useState( null)
-  let [ userLogin , setUserLogin ] = useState(null)
-  console.log(userLogin)
+  let [ data , setData ] = useState(null)
+  let [ userLogin , setUserLogin ] = useState(null || JSON?.parse(localStorage?.getItem('UserLogin')))
+
+  // JSON?.parse(localStorage?.getItem('UserLogin'))
+  // let storedData = localStorage.getItem('myData');
+  // let parsedData = storedData ? JSON.parse(storedData) : null;
+  
   useEffect(() => {
-    
   }, [userLogin])
   
   return (

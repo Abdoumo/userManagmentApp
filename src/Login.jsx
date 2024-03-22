@@ -1,9 +1,10 @@
 import React  from 'react';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth"
 import { Button, Checkbox, Form, Input } from 'antd';
-import { auth } from './firebase';
+import { auth, db } from './firebase';
 import { useContext } from 'react';
 import App, { AppContext } from './App';
+import { ref, set } from 'firebase/database';
 
 const UserDisplayName = (email) => {
     // Email address
@@ -29,13 +30,17 @@ const SignUp = (values, e) => {
         // Update user's display name
         return updateProfile(useCredential.user, {
           displayName: UserDisplayName(values.username),
-        })
+        }
+        )
           .then(() => {
               console.log("User registered successfully!");
               
             }).then(
-                <App />
+              console.log('fldkgk')
             )
+            // .then(
+            //     <App />
+            // )
             .catch((error) => {
                 console.error("Error updating user profile: ", error);
             });
@@ -43,6 +48,11 @@ const SignUp = (values, e) => {
         .catch((error) => {
             console.error("Error creating user: ", error);
         });
+
+        // set(ref(db), {
+          
+
+        // }).then(alert('submitted')).catch(err => alert(err))
     };
     
 
@@ -53,24 +63,34 @@ const SignUp = (values, e) => {
 const Login = () => {
 
       const { userLogin, setUserLogin } = useContext(AppContext);
-    const OnFinish = (values, e) => {
-          console.log('Success:', userLogin);
+      const OnFinish = (values, e) => {
+        console.log('Success:', userLogin);
         
-          signInWithEmailAndPassword(auth, values.EMAIL, values.password)
-            .then((userCredential) => {
-              setUserLogin(userCredential.user);
-              // Set a key-value pair in localStorage
-              
-
-              console.log("User signed in successfully!", userCredential.user);
-            })
-            .catch((error) => {
-              console.error("Error signing in: ", error.code, error.message);
-              // Handle specific error cases if needed
-            });
-        };
-        
-        
+        signInWithEmailAndPassword(auth, values.EMAIL, values.password)
+          .then((userCredential) => {
+            setUserLogin(userCredential.user);
+            localStorage.setItem('UserLogin', JSON.stringify(userCredential.user));
+            const email = userCredential.user.email.replace('.', '_');
+      
+            // Use set() to add data to the database
+            // return set(ref(db, email), {
+            //   bls: 1,
+            //   VFS: 1,
+            //   CANADA: 1,
+            //   TLS: 1
+            // })
+            // .then(() => {
+            //   // Code to execute when the data is successfully submitted
+            //   console.log("User signed in successfully!");
+            // })
+          })
+          .catch((error) => {
+            console.error("Error signing in: ", error.code, error.message);
+            // Handle specific error cases if needed
+          });
+      };
+      
+      
         
         const onFinishFailed = (errorInfo) => {
           console.log('Failed:', errorInfo);
@@ -79,6 +99,8 @@ const Login = () => {
         // useEffect()
 
         return (
+          <div className="Form">
+
     <Form
       name="basic"
       labelCol={{
@@ -143,20 +165,22 @@ const Login = () => {
           span: 16,
         }}
       >
-        <Checkbox>Remember me</Checkbox>
       </Form.Item>
+        <Checkbox>Remember me | </Checkbox>
+        <a target='_blank' href='https://wa.me/+213699326406/?text=Im%20interested%20in%20creating%20an%20account%20in%20the%20User%20Managemnt%20System'>| Create Accounts ?</a>
   
       <Form.Item
         wrapperCol={{
           offset: 8,
           span: 16,
         }}
-      >
-        <Button type="primary" htmlType="submit">
+        >
+        <Button id='submitButton' shape="round" type="primary" htmlType="submit">
           Submit
         </Button>
       </Form.Item>
     </Form>
+        </div>
   );
 }
 

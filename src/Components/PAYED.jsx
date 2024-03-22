@@ -10,7 +10,6 @@ const PAYEDComponent = (props) => {
           // label['label'] === 'REST : ' ? : filterOnchange(label['label'] )
           // console.log(document.querySelector('#rest'))
           setChangePayment(label['label'])
-          console.log(onChange, 'ffff')
           setChange(label['label'])
             if(onChange.includes('REST : ')){
 
@@ -27,7 +26,6 @@ const PAYEDComponent = (props) => {
         }
         const inputChange = (event) => {
             var value = onChangePayment+ event
-            console.log(event, 'event')
             if (!onChange.includes("REST :")){
               document.getElementById('rest').value = '' 
             }else {

@@ -4,13 +4,14 @@ import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import { Modal, Input } from 'antd';
+import { AppContext } from '../../App';
 
 const LeftSide = () => {
+  const { data, userLogin } = React.useContext(AppContext);
   const [buttonCount, setButtonCount] = useState(1); // State to keep track of button count
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [popups, setPopups] = useState([]);
-
 
 
   const handleShowPopup = () => {
@@ -32,21 +33,35 @@ const LeftSide = () => {
     setInputValue('');
   };
 
+  const Logout = () => {
+    localStorage.removeItem('myData')
+    localStorage.removeItem('UserLogin')
+    window.location.reload()
+  }
+
 
   const navigate = useNavigate();
   return (
     <div className="leftside">
       <Stack spacing={2} direction="column">
-      <Button onClick={() => navigate('/')} variant="contained">BLS</Button>
-      <Button onClick={() => navigate('/canada')} variant="contained">Canada</Button>
-      <Button onClick={() => navigate('/tls')} variant="contained">TLS</Button>
-      <Button onClick={() => navigate('/vfs')} variant="contained">VFS</Button>
-      
+      <Button onClick={() => navigate('/')}>BLS</Button>
+      <Button onClick={() => navigate('/canada')}>Canada</Button>
+      <Button onClick={() => navigate('/tls')}>TLS</Button>
+      <Button onClick={() => navigate('/vfs')}>VFS</Button>
+      {
+        Object.keys(data).map((ele, keys) => {
+          if (!['CANADA', 'TLS', 'VFS', 'BLS'].includes(ele)){
+            return <Button key={keys} onClick={() => navigate(`/${ele}`)}>{ele}</Button>
+          }
+        })
+      }
+      <Button id='Logout' onClick={() => Logout()}>LOG OUT</Button>
      
       {/* Button to show new popup */}
-      <Button onClick={handleShowPopup} variant="outlined">
+
+      {/* <Button onClick={handleShowPopup} variant="outlined">
           +
-        </Button>
+        </Button> */}
 
         {/* Render popups */}
         {popups.map((popup, index) => (

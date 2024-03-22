@@ -7,7 +7,6 @@ const SelectWillaya = (props) => {
   let value=props.value
   const [onChange, setChange ] =  useState(value)
   const handleChange = (event, label) => {
-    console.log(event, label, 'ss')
     filterOnchange(label['label'] )
     setChange(label['label'])
 

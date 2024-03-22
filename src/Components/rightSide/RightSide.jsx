@@ -5,6 +5,7 @@ import { UpdateUser, CreateUser } from '../CRUD';
 import { BlsGlobal, Canada, TlsContact, Vfs } from './CountriesWebsites';
 import { AppContext } from '../../App';
 import AllCountries from './CountriesWebsites/AllCountries/AllCountries';
+import Autre from './CountriesWebsites/Autre/Autre';
 
 
 
@@ -14,11 +15,10 @@ const RightSide = () => {
         // CreateUser()
     }, [])
     const { data } = useContext(AppContext)
-    console.log(data, 'rrr')
 
 
     return (
-    <div id='rightSide' >
+    <div id='rightSide' style={{margin: '25px'}} >
         <Routes>
           <Route  path='/' index element={<BlsGlobal  data={data} />} />
           <Route  path='/bls'  index element={<BlsGlobal  data={data} />} />
@@ -27,6 +27,14 @@ const RightSide = () => {
           <Route  path='/canada' element={<Canada   data={data} />} />
           <Route  path='/vfs'  element={<Vfs  data={data} />} />
           <Route  path='/TLS' element={<TlsContact   data={data} />} />
+          
+          {
+        Object.keys(data).map((ele, key) => {
+          if (!['CANADA', 'TLS', 'VFS', 'BLS'].includes(ele)){
+            return <Route key={key} path={`/${ele}`} element={<Autre ADDed={ele}  data={data} />} />
+          }
+        })
+      }
           <Route  path='/*' element={<AllCountries   data={data} />} />
           
         </Routes>
