@@ -12,14 +12,20 @@ const AllCountries = ({data, ADDed}) => {
     
   }, [data])
   return (
+    <>
+    {
+      console.log(Object.keys(data), 'data')
+    }
     <div>
       <Button type="primary" onClick={() => navigate(`/CreateUser`, {state : {country: location.state.country}})} style={{margin: '25px'}} size={'large'}> Ajouter un utulisateur </Button>
       {
-        data[location.state.country] && (
+        (location.state && data[location.state.country] ) ? (
+          
           <TableComponent country={location.state.country} />
-        )
+        )  : navigate(`/404`)
       }
     </div>
+      </>
   )
 }
 

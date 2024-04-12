@@ -69,6 +69,7 @@ const CreateUser = (para) => {
           instance.destroy();
         }, secondsToGo * 1000);
         navigate(`/${WebsiteUserCreate}`)
+        window.location.reload()
       };
       
     return(

@@ -7,9 +7,10 @@ import FirebaseData from './Components/firebaseData';
 import Login from './Login';
 
 
+
 export const AppContext = createContext(null)
 function App() {
-  let [ data , setData ] = useState(null)
+  let [ data , setData ] = useState(localStorage?.getItem('myData') != "undefined" ? JSON?.parse(localStorage?.getItem('myData')) : null)
   let [ userLogin , setUserLogin ] = useState(null || JSON?.parse(localStorage?.getItem('UserLogin')))
 
   // JSON?.parse(localStorage?.getItem('UserLogin'))

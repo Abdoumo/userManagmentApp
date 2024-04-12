@@ -11,8 +11,7 @@ const FirebaseData = () => {
         onValue(starCountRef, (snapshot) => {
         const dataResult = snapshot.val();
         setData(dataResult[`${emailCount}`])
-        localStorage.setItem('myData', JSON.stringify(dataResult[`${emailCount}`]));
-        
+        localStorage.setItem('myData', JSON.stringify(dataResult[`${emailCount}`]));        
         
     });
       

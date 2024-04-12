@@ -44,24 +44,14 @@ const LeftSide = () => {
   return (
     <div className="leftside">
       <Stack spacing={2} direction="column">
-      <Button onClick={() => navigate('/')}>BLS</Button>
-      <Button onClick={() => navigate('/canada')}>Canada</Button>
-      <Button onClick={() => navigate('/tls')}>TLS</Button>
-      <Button onClick={() => navigate('/vfs')}>VFS</Button>
       {
-        Object.keys(data).map((ele, keys) => {
-          if (!['CANADA', 'TLS', 'VFS', 'BLS'].includes(ele)){
+        Object.keys(data)?.map((ele, keys) => {
             return <Button key={keys} onClick={() => navigate(`/${ele}`)}>{ele}</Button>
-          }
         })
       }
-      <Button id='Logout' onClick={() => Logout()}>LOG OUT</Button>
      
       {/* Button to show new popup */}
 
-      {/* <Button onClick={handleShowPopup} variant="outlined">
-          +
-        </Button> */}
 
         {/* Render popups */}
         {popups.map((popup, index) => (
@@ -83,10 +73,14 @@ const LeftSide = () => {
         {/* Render new buttons from popups */}
         {popups.map((popup, index) => (
           popup.value && (
-            <Button key={index} onClick={() => navigate(`${popup.value}`, {state : {country: `${popup.value}`}})} variant="contained">{popup.value}
+            <Button key={index} onClick={() => navigate(`${popup.value}`, {state : {country: `${popup.value}`}})} >{popup.value}
             </Button>
           )
         ))}
+      <Button onClick={handleShowPopup} variant="contained">
+          +
+        </Button>
+      <Button id='Logout' onClick={() => Logout()}>LOG OUT</Button>
       </Stack>
     </div>
   )
